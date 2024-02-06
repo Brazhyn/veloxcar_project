@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for form_field in form %}
+            <div>
+                {% if form_field.errors %}
+                    {{ form_field.errors }}
+                {% endif %}
+
+                {{ form_field.label }}
+                {{ form_field }}
+            </div>
+            {% endfor %}
+            <br>
+            <button type="submit">Зареєструватися</button>
+        </form>
+    </div>
+{% endblock %}

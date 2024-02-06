@@ -13,8 +13,13 @@ class Category(models.Model):
     description = models.TextField(
         validators=[MinLengthValidator(20)], blank=False, null=True)
 
+    class Meta:
+        verbose_name_plural = "categories"
+
     def __str__(self) -> str:
         return f"{self.name}"
+    
+    
 
 
 class CarPost(models.Model):
@@ -35,8 +40,15 @@ class CarPost(models.Model):
         get_user_model(), default=1, on_delete=models.SET_DEFAULT)
 
     def save(self, *args, **kwargs):
-        combined_value = f"{self.brand} {self.id}"
-        self.slug = slugify(combined_value)
+        combined_value = f"{self.brand} {self.car_model} {self.year}"
+        base_slug = slugify(combined_value)
+        self.slug = base_slug
+
+        if CarPost.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            counter = 1
+            while CarPost.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+                self.slug = f"{base_slug}-{counter}"
+                counter += 1
 
         super().save(*args, **kwargs)
 

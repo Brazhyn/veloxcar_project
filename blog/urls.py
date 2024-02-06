@@ -1,9 +1,11 @@
 from django.urls import path, include
 from . import views
 
+app_name = 'blog'
+
 category_patterns = [
     path('', views.categories_list),
-    path('<str:category_name>/', views.categories_list), 
+    path('<str:category_name>/', views.categories_list),
     path('<str:category_name>/create_post/', views.create_post),
     path('<str:category_name>/<slug:post_slug>/', views.post_detail),
     path('<str:category_name>/<slug:post_slug>/update/', views.update_post),

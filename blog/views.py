@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Головна сторінка")
+    return render(request, "blog/index.html")
 
 
 def categories_list(request):

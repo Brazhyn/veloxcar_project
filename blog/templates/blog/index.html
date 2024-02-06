@@ -1,2 +1,19 @@
 {% extends "base.html" %} 
 
+
+{% block title %}
+    Main Page
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'accounts:registration' %}">Реєстрація</a>
+    </div>
+    <div>
+        <a href="{% url 'accounts:authorization' %}">Авторизація</a>
+    </div>
+    <div>
+        <a href="{% url 'accounts:user_logout' %}">Вийти з акаунта</a>
+    </div>
+{% endblock %}
+

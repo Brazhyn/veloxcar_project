@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    детально про пост
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>{{ post.brand }}</p>
+        <p>{{ post.car_model }}</p>
+        <p>{{ post.year }}</p>
+        <p>{{ post.price }}</p>
+        <p>{{ post.excerpt }}</p>
+        <img src="{{ post.image.url }}" alt="">
+        <p>{{ post.date_published }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.category }}</p>
+        <p>{{ post.author }}</p>
+        {% if user.is_authenticated %}
+            {% if user == post.author %}
+                <button><a href="{% url 'blog:update_post' post.category.slug post.slug %}">Редагувати</a></button>
+                <button><a href="{% url 'blog:delete_post' post.category.slug post.slug %}">Видалити</a></button>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

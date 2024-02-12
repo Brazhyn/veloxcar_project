@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'blog',
-    'accounts'
+    'accounts',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [
@@ -112,6 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.User'
 
+LOGIN_URL = '/accounts/authorization/'
+
+LOGIN_REDIRECT_URL = '/'
 
 
 # Internationalization

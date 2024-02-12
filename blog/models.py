@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.utils import timezone
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
@@ -12,14 +13,14 @@ class Category(models.Model):
                               default='default/no_image.jpg', blank=True, null=True)
     description = models.TextField(
         validators=[MinLengthValidator(20)], blank=False, null=True)
+    
+    slug = models.SlugField(unique=True, db_index=True, null=True)
 
     class Meta:
         verbose_name_plural = "categories"
 
     def __str__(self) -> str:
         return f"{self.name}"
-    
-    
 
 
 class CarPost(models.Model):
@@ -51,6 +52,9 @@ class CarPost(models.Model):
                 counter += 1
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.category.slug, self.slug])
 
     def __str__(self) -> str:
         return f"{self.brand}, {self.author}"

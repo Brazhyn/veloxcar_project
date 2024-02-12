@@ -19,7 +19,7 @@ class RegisterForm(UserCreationForm):
         required=False, widget=forms.SelectDateWidget(years=year_range))
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username', 'email', 'password1', 'password2',
                   'profile_image', 'address', 'date_of_birth']
 
@@ -50,7 +50,7 @@ class RegisterForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username', 'password']
 
     def __init__(self, request: Any = ..., *args: Any, **kwargs: Any) -> None:

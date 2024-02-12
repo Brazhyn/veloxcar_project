@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Додавання поста
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>{{ category.name }}</p>
+        <p>{{ category.description }}</p>
+    </div>
+    <br>
+    <div>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <p>{{ post.brand }}</p>
+                    <p>{{ post.car_model }}</p>
+                    <p>{{ post.year }}</p>
+                    <!-- <a href="{% url 'blog:post_detail' post.category.slug post.slug %}">Детальніше</a> -->
+                    <a href="{{ post.get_absolute_url }}">Детальніше</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

@@ -7,6 +7,12 @@ from . forms import CarPostForm, CarPostUpdateForn
 from . models import Category, CarPost
 
 
+def all_posts(request):
+    return render(request, 'blog/all_posts.html')
+
+def about_us(request):
+    return render(request, 'blog/about_us.html')
+
 def index(request):
     categories = Category.objects.all()
     posts = CarPost.objects.all().order_by('-date_published')[:3]
@@ -19,9 +25,11 @@ def index(request):
 def category_posts_list(request, category_slug):
     category = Category.objects.get(slug=category_slug)
     posts = CarPost.objects.filter(category__name=category.name)
+    posts_count = posts.count()
     return render(request, 'blog/category_posts_list.html', {
         'posts': posts,
-        'category': category
+        'category': category,
+        'posts_count': posts_count
     })
 
 

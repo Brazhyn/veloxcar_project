@@ -1,0 +1,171 @@
+.intro {
+    background-color: #4146A6;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.intro_row {
+    display: flex;
+    flex-direction: column;
+    height: 30vb;
+    justify-content: space-around;
+}
+.intro__question {
+    font-weight: 700;
+    color: #F2B544;
+    font-size: 70px;
+
+}
+.intro__metaphorical-text {
+    color: #F2B544;
+    font-size: 30px;
+    font-weight: 400;
+    display: inline-block;
+}
+.intro__button-add-post {
+    display: flex;
+    height: 50px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    border-radius: 7px;
+    transition: transform 0.3s ease-out;
+    transform: scale(1);
+}
+
+.intro__button-add-post:hover {
+    /* Зменшуємо розмір кнопки при наведенні */
+    transform: scale(0.95);
+}
+
+.intro__button-add-post span{
+    font-weight: 700;
+    color: black;
+    display: block;
+}
+
+
+
+/* start for title "Latest posts" */
+.latest-posts-title {
+    padding: 10rem 0rem 2rem 0rem;
+}
+
+.latest-posts-title__row{
+    display: flex;
+    justify-content: center;
+}
+
+.item-post__title{
+    font-size: 40px;
+    font-weight: 700;
+}
+/* end for title "Latest posts" */
+
+.latest-posts {
+    background-color: #323232;
+    border-radius: 5px;
+    padding: 80px 0px 70px 0px;
+}
+
+.latest-posts__row {
+    display: flex;
+}
+.latest-posts__column {
+    flex: 0 1 50%;
+	padding: 0px 20px;
+	/* margin: 0px 0px 30px 0px; */
+    margin: 0px -7px;
+}
+.item__row {
+    display: flex;
+    flex-direction: column;
+}
+.item__image {
+    flex: 0 0 200px;
+}
+
+.item__image img{
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.item__body {
+    margin-top: 15px;
+    color: antiquewhite;
+    /* font-size: 20px; */
+}
+.item__brand-model {
+    margin-top: 5px;
+}
+
+.item__year{
+    margin-top: 5px;
+}
+
+.item__button-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: antiquewhite;
+    border-radius: 7px;
+    color: black;
+    height: 35px;
+    width: 200px;
+    transition: transform 0.3s ease-out; /* плавна анімація зміни розміру */
+    transform: scale(1);
+}
+
+.item__button-detail:hover{
+    transform: scale(0.95);
+}
+
+.item__category {
+    margin-top: 5px;
+}
+.item__button-detail span{
+    font-weight: 500;
+}
+
+.categories-title{
+    padding: 10rem 0rem 1rem 0rem;
+}
+
+.categories-title__row{
+    display: flex;
+    justify-content: center;
+}
+
+.item-category__title{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.categories {
+}
+.categories_row {
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+.categories__item {
+    display: inline-block;
+    background-color: #B4CED9;
+    border-radius: 7px;
+    transition: transform 0.3s ease-out; /* плавна анімація зміни розміру */
+    transform: scale(1);
+}
+
+.categories__item:hover {
+    /* Зменшуємо розмір кнопки при наведенні */
+    transform: scale(0.95);
+}
+.category-item__title {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+

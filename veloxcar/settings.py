@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     'blog',
     'accounts',
-    'django_cleanup'
+    'django_cleanup',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

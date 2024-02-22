@@ -1,31 +1,78 @@
 {% extends "base.html" %} 
+{% load static %}
 
 
 {% block title %}
     Main Page
 {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div>
-        <a href="{% url 'accounts:registration' %}">Реєстрація</a>
+    <div class="intro">
+        <div class="container">
+            <div class="intro_row">
+                <div class="intro__question">Набридла рутина?</div>
+                <div class="intro__metaphorical-text">Відкрийте для себе нескінченні подорожі на дорозі нашого автомобільного блогу!</div>
+
+                <a href="{% url 'blog:create_post' %}" class="intro__button-add-post"><span>Додати пост</span></a>
+                <!-- <div class="intro__button-add-post"><a href="{% url 'blog:create_post' %}">Додати пост</a></div> -->
+            </div>
+        </div>
     </div>
-    <div>
-        <a href="{% url 'accounts:authorization' %}">Авторизація</a>
+    <div class="latest-posts-title">
+        <div class="container">
+            <div class="latest-posts-title__row item-post">
+                <div class="item-post__title">Останні пости</div>
+            </div>
+        </div>
     </div>
-    <div>
-        <a href="{% url 'accounts:user_logout' %}">Вийти з акаунта</a>
+    <div class="latest-posts">
+        <div class="container">
+            <div class="latest-posts__row">
+                {% for post in posts %}
+                <div class="latest-posts__column">
+                    <div class="latest-posts__item item">
+                        <div class="item__row">
+                            <div class="item__image"><img src="{{ post.image.url }}" alt="Фото недоступне"></div>
+                            <div class="item__body">
+                                <div class="item__brand-model">{{ post.brand }} {{ post.car_model }}</div>
+                                <div class="item__year">{{ post.year }}</div>
+                                <!-- <div class="item__model">{{ post.car_model }}</div> -->
+                                <div class="item__category">{{ post.category }}</div>
+                                <a href="{{ post.get_absolute_url }}" class="item__button-detail"><span>Докладніше</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <br>
-    <a href="{% url 'blog:create_post' %}">Додати пост</a>
-    <div>
-        <ul>
-            {% for category in categories %}
-                <li>
-                    <p>{{ category.name }}</p>    
-                    <a href="{% url 'blog:category_posts_list' category.slug %}"><img src="{{ category.image.url }}" alt="Без фото"></a>
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="categories-title">
+        <div class="container">
+            <div class="categories-title__row item-category">
+                <div class="item-category__title">Тип автомобіля</div>
+            </div>
+        </div>
+    </div>
+    <div class="categories">
+        <div class="container">
+            <div class="categories_row">
+                {% for category in categories %}
+                <a href="{% url 'blog:category_posts_list' category.slug %}" class="categories__item category-item">
+                    <div class="category-item__image">
+                        <img src="{{ category.image.url }}" alt="Фото недоступне">
+                    </div>
+                    <div class="category-item__title">
+                        <span>{{ category.name }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 

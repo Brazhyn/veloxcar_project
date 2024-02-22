@@ -14,5 +14,7 @@ category_patterns = [
 urlpatterns = [
     path('', views.index, name='index'),
     path('create_post/', views.CreatePostView.as_view(), name='create_post'),
-    path('categories/', include(category_patterns))
+    path('categories/', include(category_patterns)),
+    path('about_us/', views.about_us, name='about_us'),
+    path('all_posts/', views.all_posts, name='all_posts')
 ]

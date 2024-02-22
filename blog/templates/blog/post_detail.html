@@ -4,23 +4,53 @@
     детально про пост
 {% endblock %}
 
+{% block style %}{% endblock %}
+
 {% block content %}
-    <div>
-        <p>{{ post.brand }}</p>
-        <p>{{ post.car_model }}</p>
-        <p>{{ post.year }}</p>
-        <p>{{ post.price }}</p>
-        <p>{{ post.excerpt }}</p>
-        <img src="{{ post.image.url }}" alt="">
-        <p>{{ post.date_published }}</p>
-        <p>{{ post.content }}</p>
-        <p>{{ post.category }}</p>
-        <p>{{ post.author }}</p>
-        {% if user.is_authenticated %}
-            {% if user == post.author %}
-                <button><a href="{% url 'blog:update_post' post.category.slug post.slug %}">Редагувати</a></button>
-                <button><a href="{% url 'blog:delete_post' post.category.slug post.slug %}">Видалити</a></button>
-            {% endif %}
-        {% endif %}
+    <div class="post">
+        <div class="container">
+            <div class="post__row">
+                <div class="post__body">
+                    <div class="post__image">
+                        <img src="{{ post.image.url }}" alt="Без фото">
+                    </div>
+                    <div class="post__year">
+                        <p>{{ post.year }}</p>
+                    </div>
+                    <div class="post__brand">
+                        <p>{{ post.brand }}</p>
+                    </div>
+                    <div class="post__model">
+                        <p>{{ post.car_model }}</p>
+                    </div>
+                    <div class="post__price">
+                        <p>{{ post.price }}</p>
+                    </div>
+                    <div class="post__excerpt">
+                        <p>{{ post.excerpt }}</p>
+                    </div>
+                    <div class="post__content">
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <div class="post__category">
+                        <p>{{ post.category }}</p>
+                    </div>
+                    <div class="post__date_published">
+                        <p>Опубліковано: {{ post.date_published }}</p>
+                    </div>
+                    <div class="post__author">
+                        <p>Автор: {{ post.author }}</p>
+                    </div>
+                </div>
+                <div class="post__buttons button">
+                {% if user.is_authenticated %}
+                    {% if user == post.author %}
+                    <button class="button__update"><a href="{% url 'blog:update_post' post.category.slug post.slug %}">Редагувати</a></button>
+                    <button class="button__delete"><a href="{% url 'blog:delete_post' post.category.slug post.slug %}">Видалити</a></button>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
